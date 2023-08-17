@@ -1,7 +1,14 @@
 # PROVIDER
 terraform {
 
-  required_version = "~> 1.4"
+ backend "s3" {
+  bucket         = "tf-terraform-hello-world-state-yumi"
+  key            = "terraform.tfstate"
+  dynamodb_table = "tf-notifier-state-v1"
+  region         = "us-east-1"
+}
+
+ required_version = "~> 1.4"
 
   required_providers {
     aws = {
@@ -12,13 +19,6 @@ terraform {
 
 }
 
-
-backend "s3" {
-  bucket         = "tf-terraform-hello-world-state-yumi"
-  key            = "terraform.tfstate"
-  dynamodb_table = "tf-notifier-state-v1"
-  region         = "us-east-1"
-}
 
 provider "aws" {
   region                   = "us-east-1"
