@@ -9,7 +9,7 @@ jobs:
 
   job-Terraform_Apply:
     runs-on: ubuntu-latest
- 
+    environment: PROD 
     steps:
 
     - name: Step 01 - Terraform Install
